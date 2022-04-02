@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import { Deshboard } from "./components/Deshboard/Deshboard";
 import { Header } from "./components/Header/header";
 import { NewTransactionModal } from "./components/NewTransactionModal/NewTransactionModal";
+import { TransactionsProvider } from "./hooks/useTransactions";
 import { GlobalStyle } from "./styles/global";
 
 Modal.setAppElement("#root");
@@ -19,7 +20,7 @@ export function App() {
     setModalIsOpenIsOpen(false);
   }
   return (
-    <>
+    <TransactionsProvider>
       <Header onOpenNewTransactionModal={handleOpenNewTransactionModal} />
       <Deshboard />
       <NewTransactionModal
@@ -27,6 +28,6 @@ export function App() {
         onCloseNewTransactionModal={handleCloseNewTransactionModal}
       />
       <GlobalStyle />
-    </>
+    </TransactionsProvider>
   );
 }
